@@ -2,7 +2,7 @@ from svmutil import *
 import numpy as np
 import matplotlib.pyplot as plt
 arrays = []
-'''
+
 f=open('./data/abalone.train.scaled')
 line = f.readline()
 while line:
@@ -17,7 +17,7 @@ f = open('./data/abalone.train.scaled.random', 'w')
 for i in range(3133):
     f.write(arrays[i])
 f.close()
-'''
+
 y, x = svm_read_problem('./data/abalone.train.scaled.random')
 
 start_k = -10

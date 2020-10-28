@@ -4,7 +4,6 @@ import scipy.sparse
 import matplotlib.pyplot as plt
 import os
 
-'''
 gamma = 1 / 10
 coef0 = 0
 
@@ -85,7 +84,7 @@ for d in range(1, 5):
 for d in range(1,5):
     os.system(".\data\svm-scale -s ./data/range_"+str(d)+" ./data/abalone.train_"+str(d)+" > ./data/abalone.train.scaled_"+str(d))
     os.system(".\data\svm-scale -r ./data/range_"+str(d)+" ./data/abalone.test_"+str(d)+" > ./data/abalone.test.scaled_"+str(d))
-'''
+
 
 start_k = -10
 end_k = 10
@@ -102,11 +101,6 @@ for d in degree:
     y[d - 1, :], temp_x = svm_read_problem('./data/abalone.train.scaled_' + str(d), return_scipy=True)
     x.append(temp_x)
 
-    '''
-    # y[d - 1, :], temp_x= svm_read_problem('./data/abalone.train_'+str(d), return_scipy=True)
-    # x.append(temp_x)
-    # scale_param.append(csr_find_scale_param(x[d-1]))
-    # x[d-1] = csr_scale(x[d-1], scale_param[d-1])
 
     stat_mean = np.ndarray([end_k - start_k + 1])
     stat_std = np.ndarray([end_k - start_k + 1])
@@ -137,19 +131,14 @@ for d in degree:
 print('best k is ' + str(min_k))
 print('best d is ' + str(min_d))
 
-'''
 
-min_k = 10
+
 y_pred = np.ndarray([4, 1044])
 x_pred = []
 cv_err = np.ndarray([4])
 test_err = np.ndarray([4])
 c_param = 2 ** min_k
 for d in degree:
-    
-    # y_pred[d - 1, :], temp_x = svm_read_problem('./data/abalone.test_' + str(d), return_scipy=True)
-    # x_pred.append(temp_x)
-    # x_pred[d-1]=csr_scale(x_pred[d-1], scale_param[d-1])
     
     y_pred[d - 1, :], temp_x = svm_read_problem('./data/abalone.test.scaled_' + str(d), return_scipy=True)
     x_pred.append(temp_x)
